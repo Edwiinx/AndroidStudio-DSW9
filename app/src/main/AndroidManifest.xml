@@ -13,6 +13,21 @@
         android:theme="@style/Theme.AndroidStudioDSW9"
         tools:targetApi="31">
         <activity
+            android:name=".Captura"
+            android:exported="false"
+            android:label="@string/title_activity_captura"
+            android:theme="@style/Theme.AndroidStudioDSW9" />
+        <activity
+            android:name=".Visa"
+            android:exported="false"
+            android:label="@string/title_activity_visa"
+            android:theme="@style/Theme.AndroidStudioDSW9" />
+        <activity
+            android:name=".Carrito"
+            android:exported="false"
+            android:label="@string/title_activity_carrito"
+            android:theme="@style/Theme.AndroidStudioDSW9" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
