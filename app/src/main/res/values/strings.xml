@@ -3,4 +3,16 @@
     <string name="title_activity_carrito">Carrito</string>
     <string name="title_activity_visa">Visa</string>
     <string name="title_activity_captura">Captura</string>
+    <string name="productos_electronicos">PRODUCTOS ELECTRONICOS</string>
+    <string name="nombre_de_la_empresa">Nombre de la empresa</string>
+    <string name="carrito">Carrito</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="pc">PC</string>
+    <string name="teclado">Teclado</string>
+    <string name="altavoz">altavoz\n</string>
+    <string name="componentes">Componentes</string>
+    <string name="monitor">Monitor</string>
+    <string name="mouse">Mouse</string>
+    <string name="laptop">Laptop</string>
+    <string name="caja">caja</string>
 </resources>
