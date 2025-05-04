@@ -3,4 +3,12 @@
     <string name="title_activity_carrito">Carrito</string>
     <string name="title_activity_visa">Visa</string>
     <string name="title_activity_captura">Captura</string>
+    <string name="inputuser">Ingresar usuario</string>
+    <string name="inputpassword">Ingresar contraseña</string>
+    <string name="title_loginbtn">Ingresar</string>
+    <string name="title_registerbtn">Registrar</string>
+    <string name="titlelogintextview">Login</string>
+    <string name="registertologintextview">Registro</string>
+    <string name="logintoregistertextview">Registrarse</string>
+    <string name="registertologintext">Regresar a login</string>
 </resources>

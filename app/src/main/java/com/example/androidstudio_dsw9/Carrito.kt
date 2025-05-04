@@ -7,6 +7,5 @@ class Carrito : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Inflamos el layout XML para la actividad Carrito
-        setContentView(R.layout.activity_carrito)
     }
 }

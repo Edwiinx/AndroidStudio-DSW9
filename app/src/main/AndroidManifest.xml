@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- Permiso para Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,39 +15,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidStudioDSW9"
         tools:targetApi="31">
-
-        <!-- Activity "Carrito" será la actividad principal -->
         <activity
-            android:name=".Carrito"
+            android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/title_activity_carrito"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AndroidStudioDSW9"
+            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- Activity "Carrito" será la actividad principal -->
+
         <activity
             android:name=".Captura"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_captura"
-            android:theme="@style/Theme.AndroidStudioDSW9" />
+            android:theme="@style/Theme.AndroidStudioDSW9" >
 
+        </activity>
+
+        <activity
+            android:name=".Registro"
+            android:exported="true"
+            android:label="@string/registertologintext"
+            android:theme="@style/Theme.AndroidStudioDSW9" >
+
+        </activity>
         <activity
             android:name=".Visa"
             android:exported="false"
             android:label="@string/title_activity_visa"
             android:theme="@style/Theme.AndroidStudioDSW9" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AndroidStudioDSW9" />
     </application>
-
-    <!-- Permiso para Internet -->
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

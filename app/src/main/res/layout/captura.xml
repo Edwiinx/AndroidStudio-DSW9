@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECE9EE"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/formContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="24dp"
+        android:elevation="4dp"
+        android:layout_margin="8dp"
+        android:layout_gravity="center_horizontal">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar Producto"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center"/>
+
+        <!-- Nombre -->
+        <TextView android:text="Nombre" style="@style/FormLabel"/>
+        <EditText
+            android:id="@+id/nombreedittext"
+            android:hint="Ingrese el nombre"
+            style="@style/FormInput"/>
+
+        <!-- Precio -->
+        <TextView android:text="Precio" style="@style/FormLabel"/>
+        <EditText
+            android:id="@+id/precioedittext"
+            android:hint="Ingrese el precio"
+            android:inputType="numberDecimal"
+            style="@style/FormInput"/>
+
+        <!-- Imagen -->
+        <TextView android:text="Imagen" style="@style/FormLabel"/>
+        <Button
+            android:id="@+id/btnSeleccionarImagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seleccionar imagen"
+            android:backgroundTint="#A74AE4"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Descripción -->
+        <TextView android:text="Descripción" style="@style/FormLabel"/>
+        <EditText
+            android:id="@+id/descripcionedittext"
+            android:hint="Ingrese la descripción"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="5"
+            android:gravity="top"
+            style="@style/FormInput"/>
+
+        <!-- Número de Serie -->
+        <TextView android:text="Número de Serie" style="@style/FormLabel"/>
+        <EditText
+            android:id="@+id/nserieedittext"
+
+            android:hint="Número de serie"
+            style="@style/FormInput"/>
+
+        <!-- Modelo -->
+        <TextView android:text="Modelo" style="@style/FormLabel"/>
+        <EditText
+            android:id="@+id/modeloedittext"
+            android:hint="Ingrese el modelo"
+            style="@style/FormInput"/>
+
+        <!-- Categoría -->
+        <TextView android:text="Categoría" style="@style/FormLabel"/>
+        <Spinner
+            android:id="@+id/spinnerCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:minHeight="48dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:backgroundTint="#A74AE4"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</ScrollView>

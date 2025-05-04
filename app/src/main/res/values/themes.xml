@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AndroidStudioDSW9" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.AndroidStudioDSW9" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="inputtextstyle">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="logintextview">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+    <style name="registertextview">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+    <style name="logintoregistertext">
+        <item name="fontFamily">sans-serif</item>
+    </style>
 </resources>
