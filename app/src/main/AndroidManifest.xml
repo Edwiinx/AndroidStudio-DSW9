@@ -47,6 +47,7 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.AndroidStudioDSW9" />
 
+        <activity android:name=".CarritoDetalleActivity" />
 
     </application>
 

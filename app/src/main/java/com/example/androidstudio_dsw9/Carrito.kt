@@ -1,25 +1,21 @@
 package com.example.androidstudio_dsw9
 
-
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import okhttp3.Call
+import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.Callback
-import okhttp3.Call
 import okhttp3.Response
 import com.google.gson.Gson
 import java.io.IOException
-
-
-
-
+import android.content.Intent
+import android.widget.ImageButton
 
 class Carrito : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -32,9 +28,16 @@ class Carrito : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerCarrito)
         progressBar = findViewById(R.id.progressBar)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
+        // Cargar productos desde el servidor
         cargarProductos()
+    }
+
+    // Esta función es llamada desde el XML cuando el botón es presionado
+    fun abrirCarrito(view: View) {
+        val intent = Intent(this, CarritoDetalleActivity::class.java)
+        startActivity(intent)
     }
 
     private fun cargarProductos() {

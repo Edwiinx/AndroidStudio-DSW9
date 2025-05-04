@@ -28,9 +28,14 @@
             android:id="@+id/imageButton3"
             android:layout_width="50dp"
             android:layout_height="51dp"
+            android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/carrito"
-            app:srcCompat="@drawable/carritoandroid" />
+            app:srcCompat="@drawable/carritoandroid"
+            android:onClick="abrirCarrito"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="8dp"/>
 
         <Button
             android:id="@+id/button1"
