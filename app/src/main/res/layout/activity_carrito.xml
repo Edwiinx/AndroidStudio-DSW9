@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Carrito">
+
     <!-- Barra superior -->
     <LinearLayout
         android:id="@+id/barraSuperior"
@@ -13,163 +15,164 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingTop="24dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nombre_de_la_empresa"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre_de_la_empresa"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="50dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="16dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/carrito"
-            app:srcCompat="@drawable/carritoandroid"
-            android:onClick="abrirCarrito"
-            android:clickable="true"
-            android:focusable="true"
-            android:elevation="8dp"/>
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="50dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/carrito"
+        app:srcCompat="@drawable/carritoandroid"
+        android:onClick="abrirCarrito"
+        android:clickable="true"
+        android:focusable="true"
+        android:elevation="8dp"/>
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="@string/iniciar_sesion" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="@string/iniciar_sesion" />
+</LinearLayout>
 
     <!-- Título de productos -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="106dp"
-        android:text="@string/productos_electronicos"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<TextView
+android:id="@+id/textView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="106dp"
+android:text="@string/productos_electronicos"
+android:textSize="25sp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.5"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Barra de filtros de productos -->
-    <LinearLayout
-        android:id="@+id/barraproductos"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="96dp"
-        android:background="#24beef"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barraSuperior">
+<LinearLayout
+android:id="@+id/barraproductos"
+android:layout_width="0dp"
+android:layout_height="52dp"
+android:layout_marginTop="96dp"
+android:background="#24beef"
+android:orientation="horizontal"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/barraSuperior">
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/pc"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pc_android" />
+<ImageButton
+    android:id="@+id/imageButton4"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/pc"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/pc_android" />
 
-        <ImageButton
-            android:id="@+id/imageButton7"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/altavoz"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/altavoz_android" />
+<ImageButton
+    android:id="@+id/imageButton7"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/altavoz"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/altavoz_android" />
 
-        <ImageButton
-            android:id="@+id/imageButton6"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/teclado"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/teclado_android" />
+<ImageButton
+    android:id="@+id/imageButton6"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/teclado"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/teclado_android" />
 
-        <ImageButton
-            android:id="@+id/imageButton8"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/componentes"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/componentes_android" />
+<ImageButton
+    android:id="@+id/imageButton8"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/componentes"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/componentes_android" />
 
-        <ImageButton
-            android:id="@+id/imageButton9"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/monitor"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/monitor_android" />
+<ImageButton
+    android:id="@+id/imageButton9"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/monitor"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/monitor_android" />
 
-        <ImageButton
-            android:id="@+id/imageButton10"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/mouse"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/mouse_android" />
+<ImageButton
+    android:id="@+id/imageButton10"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/mouse"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/mouse_android" />
 
-        <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/laptop"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/laptop_android" />
+<ImageButton
+    android:id="@+id/imageButton5"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/laptop"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/laptop_android" />
 
-        <ImageButton
-            android:id="@+id/imageButton11"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/caja"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/caja_android" />
-    </LinearLayout>
+<ImageButton
+    android:id="@+id/imageButton11"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_margin="10dp"
+    android:background="@android:color/transparent"
+    android:contentDescription="@string/caja"
+    android:scaleType="fitCenter"
+    app:srcCompat="@drawable/caja_android" />
+</LinearLayout>
 
     <!-- RecyclerView para mostrar los productos -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCarrito"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barraproductos" />
+<androidx.recyclerview.widget.RecyclerView
+android:id="@+id/recyclerCarrito"
+android:layout_width="0dp"
+android:layout_height="0dp"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/barraproductos" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- ProgressBar para mostrar mientras se cargan los productos -->
+<ProgressBar
+android:id="@+id/progressBar"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:visibility="gone"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
