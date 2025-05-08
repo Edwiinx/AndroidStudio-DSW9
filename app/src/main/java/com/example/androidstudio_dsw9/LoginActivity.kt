@@ -9,8 +9,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import org.json.JSONObject
-import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
@@ -36,18 +34,14 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
-                Log.d("LoginDebug", "Username: $username")
-                Log.d("LoginDebug", "Password: $password")
-
                 LoginTask().execute(username, password)
             } else {
-                Toast.makeText(this@LoginActivity, "Por favor ingrese usuario y contraseña", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor ingrese usuario y contraseña", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     inner class LoginTask : AsyncTask<String, Void, String>() {
-
         override fun doInBackground(vararg params: String?): String {
             val username = params[0] ?: ""
             val password = params[1] ?: ""
@@ -72,24 +66,24 @@ class LoginActivity : AppCompatActivity() {
                 val response = inputStream.bufferedReader().use { it.readText() }
                 inputStream.close()
 
-                return response
+                return response.trim()
             } catch (e: Exception) {
                 e.printStackTrace()
-                return "Error: ${e.message}"
+                return "error|${e.message}"
             } finally {
                 urlConnection.disconnect()
             }
         }
 
-
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
 
-            if (result?.startsWith("success") == true) {
+            if (result != null && result.contains("|")) {
                 val parts = result.split("|")
-                if (parts.size >= 3) {
-                    val tipo = parts[1]  // Tipo de usuario
-                    val username = parts[2]  // Nombre de usuario
+                if (parts.size >= 3 && parts[0].toIntOrNull() != null) {
+                    val idUsuario = parts[0].toInt()
+                    val tipo = parts[1]
+                    val username = parts[2]
 
                     Toast.makeText(this@LoginActivity, "Login exitoso\nUsuario: $username\nTipo: $tipo", Toast.LENGTH_LONG).show()
 
@@ -97,26 +91,23 @@ class LoginActivity : AppCompatActivity() {
                         val intent = Intent(this@LoginActivity, Captura::class.java)
                         intent.putExtra("usuario", username)
                         startActivity(intent)
-                        finish() // Para cerrar LoginActivity y no volver con el botón atrás
-                    }else if(tipo.equals("comprador", ignoreCase = true)){
+                        finish()
+                    } else if (tipo.equals("comprador", ignoreCase = true)) {
                         val intent = Intent(this@LoginActivity, Carrito::class.java)
                         intent.putExtra("usuario", username)
+                        intent.putExtra("id_usuario", idUsuario)
                         startActivity(intent)
-                        finish() // Para cerrar LoginActivity y no volver con el botón atrás
+                        finish()
                     }
-
+                } else if (result.startsWith("error|")) {
+                    val errorMessage = if (parts.size > 1) parts[1] else "Error desconocido"
+                    Toast.makeText(this@LoginActivity, "Error: $errorMessage", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this@LoginActivity, "Error en la estructura de respuesta: $result", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity, "Estructura de respuesta inválida: $result", Toast.LENGTH_LONG).show()
                 }
-            } else if (result?.startsWith("error") == true) {
-                val parts = result.split("|")
-                val errorMessage = if (parts.size > 1) parts[1] else "Error desconocido. La respuesta del servidor no contiene detalles."
-                Toast.makeText(this@LoginActivity, "Error: $errorMessage", Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(this@LoginActivity, "Respuesta completamente inesperada. Respuesta: $result", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "Respuesta inesperada: $result", Toast.LENGTH_LONG).show()
             }
         }
-
-
     }
 }
