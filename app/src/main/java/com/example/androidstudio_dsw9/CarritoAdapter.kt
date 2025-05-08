@@ -7,8 +7,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CarritoAdapter(private val productos: MutableList<Producto>) :
-    RecyclerView.Adapter<CarritoAdapter.CarritoViewHolder>() {
+class CarritoAdapter(
+    private val productos: MutableList<Producto>,
+    private val onCantidadCambiada: () -> Unit
+) : RecyclerView.Adapter<CarritoAdapter.CarritoViewHolder>() {
 
     class CarritoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombre: TextView = itemView.findViewById(R.id.textNombreProducto)
@@ -16,6 +18,7 @@ class CarritoAdapter(private val productos: MutableList<Producto>) :
         val cantidad: TextView = itemView.findViewById(R.id.textCantidad)
         val btnMenos: ImageButton = itemView.findViewById(R.id.btnMenos)
         val btnMas: ImageButton = itemView.findViewById(R.id.btnMas)
+        val btnEliminar: ImageButton = itemView.findViewById(R.id.btnEliminar)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarritoViewHolder {
@@ -27,27 +30,37 @@ class CarritoAdapter(private val productos: MutableList<Producto>) :
     override fun onBindViewHolder(holder: CarritoViewHolder, position: Int) {
         val producto = productos[position]
 
-        // Mostrar datos
         holder.nombre.text = producto.NOMBRE_PRODUCTO
         holder.precio.text = "$${producto.PRECIO_UNITARIO}"
         holder.cantidad.text = producto.CANTIDAD.toString()
 
-        // Aumentar cantidad
         holder.btnMas.setOnClickListener {
-            producto.CANTIDAD = producto.CANTIDAD + 1
+            producto.CANTIDAD += 1
             holder.cantidad.text = producto.CANTIDAD.toString()
             notifyItemChanged(position)
+            onCantidadCambiada()
         }
 
-        // Disminuir cantidad (mínimo 1)
         holder.btnMenos.setOnClickListener {
             if (producto.CANTIDAD > 1) {
-                producto.CANTIDAD = producto.CANTIDAD - 1
+                producto.CANTIDAD -= 1
                 holder.cantidad.text = producto.CANTIDAD.toString()
                 notifyItemChanged(position)
+                onCantidadCambiada()
             }
+        }
+
+        holder.btnEliminar.setOnClickListener {
+            eliminarProducto(position)
+            onCantidadCambiada()
         }
     }
 
     override fun getItemCount(): Int = productos.size
+
+    private fun eliminarProducto(position: Int) {
+        productos.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, productos.size)
+    }
 }

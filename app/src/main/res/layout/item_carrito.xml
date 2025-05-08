@@ -79,4 +79,12 @@
             android:src="@android:drawable/ic_input_add"
             android:contentDescription="Aumentar cantidad" />
     </LinearLayout>
+    <ImageButton
+        android:id="@+id/btnEliminar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@android:color/transparent"
+        android:src="@android:drawable/ic_menu_delete"
+        android:contentDescription="Eliminar producto"
+        android:layout_marginStart="8dp" />
 </LinearLayout>
