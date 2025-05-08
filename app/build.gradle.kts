@@ -63,4 +63,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("com.google.code.gson:gson:2.10")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.android.volley:volley:1.2.1")
 }
