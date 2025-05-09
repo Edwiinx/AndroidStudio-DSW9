@@ -12,8 +12,10 @@ import android.widget.Toast
 import okhttp3.*
 import java.io.IOException
 
-class ProductoAdapter(private val productos: List<Producto>) :
-    RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+class ProductoAdapter(
+    private val productos: List<Producto>,
+    private val idUsuario: Int
+) : RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
     class ProductoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombre: TextView = itemView.findViewById(R.id.textNombreProducto)
@@ -45,12 +47,11 @@ class ProductoAdapter(private val productos: List<Producto>) :
         if (resId != 0) {
             holder.imagen.setImageResource(resId)
         } else {
-            holder.imagen.setImageResource(R.drawable.placeholder) // Imagen por defecto si no se encuentra
+            holder.imagen.setImageResource(R.drawable.placeholder) // Imagen por defecto
         }
 
         // Acción al presionar botón agregar
         holder.botonAgregar.setOnClickListener {
-            val idUsuario = 7
             val idProducto = producto.ID_PRODUCTO
             val cantidad = 1
             val totalPrecio = producto.PRECIO_UNITARIO.toString()

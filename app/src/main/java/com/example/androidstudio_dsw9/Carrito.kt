@@ -20,6 +20,7 @@ import java.io.IOException
 class Carrito : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
+    private var idUsuario: Int = -1  // ID dinámico
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +31,11 @@ class Carrito : AppCompatActivity() {
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
+        // Obtener el ID del usuario enviado por intent
+        idUsuario = intent.getIntExtra("id_usuario", -1)
+
         // Cargar productos desde el servidor
-        cargarProductos()
+        cargarProductos(idUsuario)
     }
 
     // Esta función es llamada desde el XML cuando el botón es presionado
@@ -39,7 +43,7 @@ class Carrito : AppCompatActivity() {
         Log.d("Carrito", "abrirCarrito() invoked")
         try {
             val intent = Intent(this, CarritoDetalleActivity::class.java)
-            intent.putExtra("id_usuario", 7)
+            intent.putExtra("id_usuario", idUsuario)  // Usar ID dinámico
             startActivity(intent)
         } catch (e: Exception) {
             Log.e("Carrito", "Error al lanzar CarritoDetalleActivity", e)
@@ -47,7 +51,7 @@ class Carrito : AppCompatActivity() {
         }
     }
 
-    private fun cargarProductos() {
+    private fun cargarProductos(idUsuario: Int) {
         progressBar.visibility = View.VISIBLE
 
         val request = Request.Builder()
@@ -67,7 +71,7 @@ class Carrito : AppCompatActivity() {
                 val productos = Gson().fromJson(json, Array<Producto>::class.java).toList()
 
                 runOnUiThread {
-                    recyclerView.adapter = ProductoAdapter(productos)
+                    recyclerView.adapter = ProductoAdapter(productos, idUsuario)
                     progressBar.visibility = View.GONE
                 }
             }
