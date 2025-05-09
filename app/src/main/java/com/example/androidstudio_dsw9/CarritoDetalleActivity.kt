@@ -29,18 +29,28 @@ class CarritoDetalleActivity : AppCompatActivity() {
         btnComprar = findViewById(R.id.btnComprar)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        // Obtener el ID del usuario desde el Intent
         idUsuario = intent.getIntExtra("id_usuario", 0)
         if (idUsuario == 0) {
             Toast.makeText(this, "Error: id_usuario no válido", Toast.LENGTH_SHORT).show()
             return
         }
 
-        adapter = CarritoAdapter(carritoList) {
-            calcularTotal()
-        }
+        // Inicializar el adaptador con nombres de parámetros correctos
+        adapter = CarritoAdapter(
+            carritoList,
+            onCantidadCambiada = { calcularTotal() },
+            idUsuario = idUsuario,
+            onProductoEliminado = { cargarCarrito() }
+        )
         recyclerView.adapter = adapter
 
         cargarCarrito()
+
+        // Acción para el botón de compra
+        btnComprar.setOnClickListener {
+            Toast.makeText(this, "Funcionalidad de compra aún no implementada", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun cargarCarrito() {
@@ -52,7 +62,6 @@ class CarritoDetalleActivity : AppCompatActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 runOnUiThread {
                     Toast.makeText(this@CarritoDetalleActivity, "Error de conexión", Toast.LENGTH_SHORT).show()
-                    Log.e("CarritoDetalle", "Error de conexión: ${e.message}")
                 }
             }
 
@@ -61,29 +70,33 @@ class CarritoDetalleActivity : AppCompatActivity() {
                     response.body?.let {
                         val json = it.string()
                         try {
+                            Log.d("RESPUESTA_JSON", json)
+
                             val productos = Gson().fromJson(json, Array<Producto>::class.java)
                             runOnUiThread {
+                                // 1. Limpiar lista actual
                                 carritoList.clear()
+
+                                // 2. Agregar nuevos productos
                                 carritoList.addAll(productos)
+
+                                // 3. Notificar al adaptador que los datos cambiaron
                                 adapter.notifyDataSetChanged()
+
+                                // 4. Calcular total actualizado
                                 calcularTotal()
                             }
                         } catch (e: Exception) {
                             runOnUiThread {
                                 Toast.makeText(this@CarritoDetalleActivity, "Error al procesar los datos", Toast.LENGTH_SHORT).show()
                             }
-                            Log.e("CarritoDetalle", "Error al procesar los datos: ${e.message}")
                         }
                     }
-                } else {
-                    runOnUiThread {
-                        Toast.makeText(this@CarritoDetalleActivity, "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show()
-                    }
-                    Log.e("CarritoDetalle", "Error en la respuesta del servidor: ${response.code}")
                 }
             }
         })
     }
+
 
     private fun calcularTotal() {
         val total = carritoList.sumOf { it.PRECIO_UNITARIO.toDouble() * it.CANTIDAD }
