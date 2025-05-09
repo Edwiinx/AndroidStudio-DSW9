@@ -23,4 +23,6 @@
     <string name="registertologintextview">Registro</string>
     <string name="logintoregistertextview">Registrarse</string>
     <string name="registertologintext">Regresar a login</string>
+    <string name="all">Todos</string>
+
 </resources>

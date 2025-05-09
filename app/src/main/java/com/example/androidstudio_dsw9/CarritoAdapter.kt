@@ -73,6 +73,7 @@ class CarritoAdapter(
         }
     }
 
+
     private fun eliminarEnServidor(context: android.content.Context, producto: Producto, position: Int) {
         val client = OkHttpClient()
         val requestBody = FormBody.Builder()

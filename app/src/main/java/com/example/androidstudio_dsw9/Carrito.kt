@@ -4,22 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
 import com.google.gson.Gson
+import okhttp3.*
 import java.io.IOException
 
 class Carrito : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
+    private lateinit var listaCompleta: List<Producto>
     private var idUsuario: Int = -1  // ID dinámico
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,22 +26,31 @@ class Carrito : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerCarrito)
         progressBar = findViewById(R.id.progressBar)
-
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        // Obtener el ID del usuario enviado por intent
+        // Obtener ID del usuario desde el intent
         idUsuario = intent.getIntExtra("id_usuario", -1)
 
-        // Cargar productos desde el servidor
+        // Configurar botones de categoría
+        findViewById<ImageButton>(R.id.btnPC).setOnClickListener { filtrarPorCategoria("PC") }
+        findViewById<ImageButton>(R.id.btnAltavoz).setOnClickListener { filtrarPorCategoria("SPE") }
+        findViewById<ImageButton>(R.id.btnTeclado).setOnClickListener { filtrarPorCategoria("KEY") }
+        findViewById<ImageButton>(R.id.btnComponente).setOnClickListener { filtrarPorCategoria("COM") }
+        findViewById<ImageButton>(R.id.btnMonitor).setOnClickListener { filtrarPorCategoria("MON") }
+        findViewById<ImageButton>(R.id.btnMouse).setOnClickListener { filtrarPorCategoria("MOU") }
+        findViewById<ImageButton>(R.id.btnLaptop).setOnClickListener { filtrarPorCategoria("LAP") }
+        findViewById<ImageButton>(R.id.btnCaja).setOnClickListener { filtrarPorCategoria("CAS") }
+        findViewById<ImageButton>(R.id.btnTodos).setOnClickListener { mostrarTodos() }
+
+        // Cargar todos los productos del carrito
         cargarProductos(idUsuario)
     }
 
-    // Esta función es llamada desde el XML cuando el botón es presionado
     fun abrirCarrito(view: View) {
         Log.d("Carrito", "abrirCarrito() invoked")
         try {
             val intent = Intent(this, CarritoDetalleActivity::class.java)
-            intent.putExtra("id_usuario", idUsuario)  // Usar ID dinámico
+            intent.putExtra("id_usuario", idUsuario)
             startActivity(intent)
         } catch (e: Exception) {
             Log.e("Carrito", "Error al lanzar CarritoDetalleActivity", e)
@@ -71,10 +78,20 @@ class Carrito : AppCompatActivity() {
                 val productos = Gson().fromJson(json, Array<Producto>::class.java).toList()
 
                 runOnUiThread {
-                    recyclerView.adapter = ProductoAdapter(productos, idUsuario)
+                    listaCompleta = productos
+                    recyclerView.adapter = ProductoAdapter(listaCompleta, idUsuario)
                     progressBar.visibility = View.GONE
                 }
             }
         })
+    }
+
+    private fun filtrarPorCategoria(idCategoria: String) {
+        val filtrados = listaCompleta.filter { it.ID_CATEGORIA == idCategoria }
+        recyclerView.adapter = ProductoAdapter(filtrados, idUsuario)
+    }
+
+    private fun mostrarTodos() {
+        recyclerView.adapter = ProductoAdapter(listaCompleta, idUsuario)
     }
 }
