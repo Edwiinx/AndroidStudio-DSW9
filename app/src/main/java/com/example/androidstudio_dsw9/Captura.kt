@@ -73,7 +73,7 @@ class Captura : AppCompatActivity() {
             val imagenNombre = selectedImageName ?: "sin_imagen.png"
 
             val queue = Volley.newRequestQueue(this)
-            val url = "http://192.168.0.13/miApp/captura.php"
+            val url = "http://172.29.66.12/miApp/captura.php"
 
             val stringRequest = object : StringRequest(
                 Request.Method.POST, url,

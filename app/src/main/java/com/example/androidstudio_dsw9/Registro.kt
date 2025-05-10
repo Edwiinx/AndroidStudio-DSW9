@@ -43,7 +43,7 @@ class Registro : AppCompatActivity() {
             val tipo = params[2] ?: ""
 
             try {
-                val url = URL("http://192.168.0.13/miApp/registro.php")
+                val url = URL("http://172.29.66.12/miApp/registro.php")
                 val connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "POST"
                 connection.doOutput = true
