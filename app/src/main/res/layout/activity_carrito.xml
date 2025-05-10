@@ -44,7 +44,7 @@
             android:id="@+id/cerrar_sesion"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="@string/iniciar_sesion" />
+            android:text="@string/Cerrar_sesion" />
     </LinearLayout>
 
     <!-- Título de productos -->
@@ -154,7 +154,6 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/caja_android" />
 
-        <!-- El botón de "Todos" asegurando que no se oculte -->
         <ImageButton
             android:id="@+id/btnTodos"
             android:layout_width="30dp"

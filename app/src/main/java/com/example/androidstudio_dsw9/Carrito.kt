@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -28,10 +29,18 @@ class Carrito : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-        // Obtener ID del usuario desde el intent
+        // Obtener ID del usuario
         idUsuario = intent.getIntExtra("id_usuario", -1)
 
-        // Configurar botones de categoría
+        // Botón para cerrar sesión
+        val cerrarSesionBtn = findViewById<Button>(R.id.cerrar_sesion)
+        cerrarSesionBtn.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        // se usa para filtrar los productos por categoria
         findViewById<ImageButton>(R.id.btnPC).setOnClickListener { filtrarPorCategoria("PC") }
         findViewById<ImageButton>(R.id.btnAltavoz).setOnClickListener { filtrarPorCategoria("SPE") }
         findViewById<ImageButton>(R.id.btnTeclado).setOnClickListener { filtrarPorCategoria("KEY") }

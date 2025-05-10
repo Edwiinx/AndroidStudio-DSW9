@@ -37,7 +37,6 @@ class ProductoAdapter(
         holder.nombre.text = producto.NOMBRE_PRODUCTO
         holder.precio.text = "$${producto.PRECIO_UNITARIO}"
 
-        // Quitar extensión de la imagen (.jpg, .png, etc.)
         val nombreImagenSinExtension = producto.IMAGEN.substringBeforeLast(".").lowercase()
 
         val resId = context.resources.getIdentifier(
@@ -47,7 +46,7 @@ class ProductoAdapter(
         if (resId != 0) {
             holder.imagen.setImageResource(resId)
         } else {
-            holder.imagen.setImageResource(R.drawable.placeholder) // Imagen por defecto
+            holder.imagen.setImageResource(R.drawable.placeholder) // Imagen por defecto si no se carga la imagen o no esta en la carpeta drawable
         }
 
         // Acción al presionar botón agregar
@@ -56,7 +55,7 @@ class ProductoAdapter(
             val cantidad = 1
             val totalPrecio = producto.PRECIO_UNITARIO.toString()
 
-            val url = "http://10.0.2.2/miapp/añadir_carrito.php"
+            val url = "http://10.0.2.2/miapp/añadir_carrito.php" //URL para realizar consulta a base de datos
 
             val requestBody = FormBody.Builder()
                 .add("ID_USUARIO", idUsuario.toString())

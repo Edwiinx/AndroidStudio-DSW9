@@ -24,5 +24,7 @@
     <string name="logintoregistertextview">Registrarse</string>
     <string name="registertologintext">Regresar a login</string>
     <string name="all">Todos</string>
+    <string name="Cerrar_sesion">Cerrar sesión</string>
+
 
 </resources>

@@ -29,14 +29,14 @@ class CarritoDetalleActivity : AppCompatActivity() {
         btnComprar = findViewById(R.id.btnComprar)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Obtener el ID del usuario desde el Intent
+        // Obtener el ID del usuario
         idUsuario = intent.getIntExtra("id_usuario", 0)
         if (idUsuario == 0) {
             Toast.makeText(this, "Error: id_usuario no válido", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Inicializar el adaptador con nombres de parámetros correctos
+
         adapter = CarritoAdapter(
             carritoList,
             onCantidadCambiada = { calcularTotal() },
@@ -49,12 +49,12 @@ class CarritoDetalleActivity : AppCompatActivity() {
 
         // Acción para el botón de compra
         btnComprar.setOnClickListener {
-            Toast.makeText(this, "Funcionalidad de compra aún no implementada", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Funcionalidad de compra", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun cargarCarrito() {
-        val url = "http://10.0.2.2/miapp/cargarcarrito.php?ID_USUARIO=$idUsuario"
+        val url = "http://10.0.2.2/miapp/cargarcarrito.php?ID_USUARIO=$idUsuario" // HOLA
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
 
@@ -80,7 +80,7 @@ class CarritoDetalleActivity : AppCompatActivity() {
                                 // 2. Agregar nuevos productos
                                 carritoList.addAll(productos)
 
-                                // 3. Notificar al adaptador que los datos cambiaron
+                                // 3. Notificar  que los datos cambiaron
                                 adapter.notifyDataSetChanged()
 
                                 // 4. Calcular total actualizado
@@ -97,6 +97,7 @@ class CarritoDetalleActivity : AppCompatActivity() {
         })
     }
 
+    //Funcion para calcular el total
 
     private fun calcularTotal() {
         val total = carritoList.sumOf { it.PRECIO_UNITARIO.toDouble() * it.CANTIDAD }

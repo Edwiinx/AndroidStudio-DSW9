@@ -51,25 +51,25 @@ class CarritoAdapter(
         )
         holder.imagen.setImageResource(if (resId != 0) resId else R.drawable.placeholder)
 
-        // SUMAR CANTIDAD
+        // Sumar cantidad del producto de la pantalla de carrito
         holder.btnMas.setOnClickListener {
             producto.CANTIDAD += 1
             holder.cantidad.text = producto.CANTIDAD.toString()
-            actualizarEnServidor(context, producto)  // Actualizar solo el producto que se está modificando
+            actualizarEnServidor(context, producto)
         }
 
-        // RESTAR CANTIDAD
+        // Restar cantidad del producto de la pantalla de carrito
         holder.btnMenos.setOnClickListener {
             if (producto.CANTIDAD > 1) {
                 producto.CANTIDAD -= 1
                 holder.cantidad.text = producto.CANTIDAD.toString()
-                actualizarEnServidor(context, producto)  // Actualizar solo el producto que se está modificando
+                actualizarEnServidor(context, producto)
             }
         }
 
-        // ELIMINAR DEL CARRITO
+        // Eliminar producto de la pantalla de carrito
         holder.btnEliminar.setOnClickListener {
-            eliminarEnServidor(context, producto, position)  // Eliminar solo el producto seleccionado
+            eliminarEnServidor(context, producto, position)
         }
     }
 
@@ -82,7 +82,7 @@ class CarritoAdapter(
             .build()
 
         val request = Request.Builder()
-            .url("http://10.0.2.2/miapp/eliminarproducto.php")  // URL para eliminar el producto
+            .url("http://10.0.2.2/miapp/eliminarproducto.php")  // URL para la realizar la consulta a la base de datos
             .post(requestBody)
             .build()
 
@@ -94,11 +94,11 @@ class CarritoAdapter(
             override fun onResponse(call: Call, response: Response) {
                 if (response.isSuccessful) {
                     (context as? Activity)?.runOnUiThread {
-                        carritoList.removeAt(position)  // Eliminar producto de la lista
+                        carritoList.removeAt(position)
                         notifyItemRemoved(position)
                         notifyItemRangeChanged(position, carritoList.size)
                         Toast.makeText(context, "Producto eliminado", Toast.LENGTH_SHORT).show()
-                        onProductoEliminado()  // Llamar al callback para recargar carrito
+                        onProductoEliminado()  // Recargar carrito
                     }
                 }
             }
@@ -116,7 +116,7 @@ class CarritoAdapter(
             .build()
 
         val request = Request.Builder()
-            .url("http://10.0.2.2/miapp/actualizarcarrito.php")  // URL para actualizar la cantidad del producto
+            .url("http://10.0.2.2/miapp/actualizarcarrito.php")  // URL para la realizar la consulta a la base de datos
             .post(requestBody)
             .build()
 
@@ -129,7 +129,7 @@ class CarritoAdapter(
                 if (response.isSuccessful) {
                     (context as? Activity)?.runOnUiThread {
                         Toast.makeText(context, "Cantidad actualizada", Toast.LENGTH_SHORT).show()
-                        onCantidadCambiada()  // Llamar al callback para recargar el total
+                        onCantidadCambiada()  // Recargar el total
                     }
                 }
             }
