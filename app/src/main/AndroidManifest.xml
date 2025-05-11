@@ -44,6 +44,11 @@
             android:theme="@style/Theme.AndroidStudioDSW9" />
 
         <activity
+            android:name=".Registro"
+            android:exported="false"
+            android:label="@string/title_activity_captura"
+            android:theme="@style/Theme.AndroidStudioDSW9" />
+        <activity
             android:name=".Visa"
             android:exported="false"
             android:label="@string/title_activity_visa"

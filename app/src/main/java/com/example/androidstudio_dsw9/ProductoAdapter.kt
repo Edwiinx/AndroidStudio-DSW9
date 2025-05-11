@@ -55,7 +55,7 @@ class ProductoAdapter(
             val cantidad = 1
             val totalPrecio = producto.PRECIO_UNITARIO.toString()
 
-            val url = "http://10.0.2.2/miapp/añadir_carrito.php" //URL para realizar consulta a base de datos
+            val url = "http://192.168.50.210/miapp/añadir_carrito.php" //URL para realizar consulta a base de datos
 
             val requestBody = FormBody.Builder()
                 .add("ID_USUARIO", idUsuario.toString())

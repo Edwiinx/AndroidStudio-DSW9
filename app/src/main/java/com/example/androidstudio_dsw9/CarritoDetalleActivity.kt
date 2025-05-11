@@ -54,7 +54,7 @@ class CarritoDetalleActivity : AppCompatActivity() {
     }
 
     private fun cargarCarrito() {
-        val url = "http://10.0.2.2/miapp/cargarcarrito.php?ID_USUARIO=$idUsuario" // HOLA
+        val url = "http://192.168.50.210/miapp/cargarcarrito.php?ID_USUARIO=$idUsuario" // HOLA
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
 

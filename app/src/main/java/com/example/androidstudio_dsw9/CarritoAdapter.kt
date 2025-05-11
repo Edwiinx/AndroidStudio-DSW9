@@ -82,7 +82,7 @@ class CarritoAdapter(
             .build()
 
         val request = Request.Builder()
-            .url("http://10.0.2.2/miapp/eliminarproducto.php")  // URL para la realizar la consulta a la base de datos
+            .url("http://192.168.50.210/miapp/eliminarproducto.php")  // URL para la realizar la consulta a la base de datos
             .post(requestBody)
             .build()
 
@@ -116,7 +116,7 @@ class CarritoAdapter(
             .build()
 
         val request = Request.Builder()
-            .url("http://10.0.2.2/miapp/actualizarcarrito.php")  // URL para la realizar la consulta a la base de datos
+            .url("http://192.168.50.210/miapp/actualizarcarrito.php")  // URL para la realizar la consulta a la base de datos
             .post(requestBody)
             .build()
 
