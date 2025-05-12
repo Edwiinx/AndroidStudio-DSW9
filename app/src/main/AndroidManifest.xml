@@ -49,13 +49,18 @@
             android:label="@string/title_activity_captura"
             android:theme="@style/Theme.AndroidStudioDSW9" />
         <activity
-            android:name=".Visa"
-            android:exported="false"
+            android:name=".ProcesoPagoActivity"
+            android:exported="true"
             android:label="@string/title_activity_visa"
             android:theme="@style/Theme.AndroidStudioDSW9" />
 
         <activity
             android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AndroidStudioDSW9" />
+        <activity
+            android:name=".ReciboActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AndroidStudioDSW9" />

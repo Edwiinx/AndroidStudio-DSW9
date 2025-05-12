@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-04-30T21:44:50.383922500Z">
+        <DropdownSelection timestamp="2025-05-11T00:39:26.606670100Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=R5CX3077EQP" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=R5CY31K4WAE" />
             </handle>
           </Target>
         </DropdownSelection>

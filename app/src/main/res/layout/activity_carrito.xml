@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/barraSuperior"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:background="#6200EE"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nombre_de_la_empresa"
+            android:text=" NOID BD                 "
             android:textColor="@android:color/white"
             android:textSize="20sp" />
 
@@ -33,17 +33,17 @@
             android:layout_height="51dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/carrito"
-            app:srcCompat="@drawable/carritoandroid"
-            android:onClick="abrirCarrito"
             android:clickable="true"
+            android:contentDescription="@string/carrito"
+            android:elevation="8dp"
             android:focusable="true"
-            android:elevation="8dp"/>
+            android:onClick="abrirCarrito"
+            app:srcCompat="@drawable/carritoandroid" />
 
         <Button
             android:id="@+id/cerrar_sesion"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:text="@string/Cerrar_sesion" />
     </LinearLayout>
 

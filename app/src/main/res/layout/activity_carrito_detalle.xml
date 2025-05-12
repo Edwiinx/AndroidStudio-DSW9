@@ -24,24 +24,24 @@
         android:id="@+id/layoutResumen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:background="@android:color/white">
+        android:padding="30dp">
 
         <TextView
             android:id="@+id/textTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="end"
             android:text="Total: $0.00"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="end" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnComprar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Comprar"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:text="Comprar" />
     </LinearLayout>
 </LinearLayout>

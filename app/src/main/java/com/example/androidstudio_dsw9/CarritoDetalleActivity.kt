@@ -1,5 +1,6 @@
 package com.example.androidstudio_dsw9
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -49,12 +50,16 @@ class CarritoDetalleActivity : AppCompatActivity() {
 
         // Acción para el botón de compra
         btnComprar.setOnClickListener {
-            Toast.makeText(this, "Funcionalidad de compra", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ProcesoPagoActivity::class.java)
+            intent.putExtra("id_usuario", idUsuario)
+            intent.putExtra("total", carritoList.sumOf { it.PRECIO_UNITARIO.toDouble() * it.CANTIDAD })
+            startActivity(intent)
         }
+
     }
 
     private fun cargarCarrito() {
-        val url = "http://192.168.50.210/miapp/cargarcarrito.php?ID_USUARIO=$idUsuario" // HOLA
+        val url = "http://192.168.0.4/miapp/cargarcarrito.php?ID_USUARIO=$idUsuario" // HOLA
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
 

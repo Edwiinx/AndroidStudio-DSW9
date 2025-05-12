@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
             val username = params[0] ?: ""
             val password = params[1] ?: ""
 
-            val url = URL("http://192.168.50.210/miapp/login.php")
+            val url = URL("http://192.168.0.4/miapp/login.php")
             val urlConnection = url.openConnection() as HttpURLConnection
 
             try {
