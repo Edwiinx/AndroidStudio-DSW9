@@ -9,15 +9,15 @@ http://192.168.1.100/carpeta/archivo.php
 
 Debes modificar manualmente las siguientes líneas en los archivos indicados:
 
--Captura.kt: línea 77
--Carrito.kt: línea 74
--CarritoAdapter.kt: líneas 85 y 119
--CarritoDetalleActivity.kt: línea 62
--LoginActivity.kt: línea 49
--ProcesoPagoActivity.kt: línea 131
--ProductoAdapter.kt: línea 58
--ReciboActivity.kt: línea 53
--Registro.kt: línea 46
+- Captura.kt: línea 77
+- Carrito.kt: línea 74
+- CarritoAdapter.kt: líneas 85 y 119
+- CarritoDetalleActivity.kt: línea 62
+- LoginActivity.kt: línea 49
+- ProcesoPagoActivity.kt: línea 131
+- ProductoAdapter.kt: línea 58
+- ReciboActivity.kt: línea 53
+- Registro.kt: línea 46
 
 
 Además, el proyecto requiere que la carpeta miapp se encuentre dentro de la carpeta htdocs del servidor local XAMPP. Esta carpeta contiene los archivos PHP necesarios para la conexión con la base de datos y las consultas que utiliza la aplicación, como por ejemplo conexion.php, captura.php.
