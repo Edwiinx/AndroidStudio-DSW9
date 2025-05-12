@@ -71,7 +71,7 @@ class Carrito : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
 
         val request = Request.Builder()
-            .url("http://192.168.0.4/miapp/consultacarrito.php")
+            .url("http://10.0.2.2/miapp/consultacarrito.php")
             .build()
 
         OkHttpClient().newCall(request).enqueue(object : Callback {

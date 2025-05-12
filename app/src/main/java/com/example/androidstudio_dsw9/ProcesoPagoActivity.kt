@@ -128,7 +128,7 @@ class ProcesoPagoActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
-            .url("http://192.168.0.4/miapp/procesar_pago.php")
+            .url("http://10.0.2.2/miapp/procesar_pago.php")
             .post(requestBody)
             .build()
 

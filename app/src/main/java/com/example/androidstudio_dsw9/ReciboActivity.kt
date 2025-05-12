@@ -50,7 +50,7 @@ class ReciboActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
-            .url("http://192.168.0.4/miapp/obtener_recibo.php")
+            .url("http://10.0.2.2/miapp/obtener_recibo.php")
             .post(requestBody)
             .build()
 
